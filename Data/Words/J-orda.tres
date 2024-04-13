@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RuneWord" load_steps=4 format=3 uid="uid://dtq1dn7u15xhp"]
+
+[ext_resource type="Script" path="res://Scripts/RuneWord.gd" id="1_5e82a"]
+[ext_resource type="Texture2D" uid="uid://dxb55s8k8gkxk" path="res://Art/Apprentice.png" id="2_d4x8l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23pxc"]
+atlas = ExtResource("2_d4x8l")
+region = Rect2(32, 8, 8, 8)
+
+[resource]
+script = ExtResource("1_5e82a")
+word = "jorda"
+sprite = SubResource("AtlasTexture_23pxc")

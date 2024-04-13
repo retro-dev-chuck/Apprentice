@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://u2tpaeatrdhl"]
+
+[ext_resource type="Script" path="res://Scripts/Unit.gd" id="1_60edf"]
+[ext_resource type="Resource" uid="uid://bir76va17logk" path="res://Data/Units/Enemies/Goblin.tres" id="2_0kcf7"]
+
+[node name="Goblin"]
+script = ExtResource("1_60edf")
+data = ExtResource("2_0kcf7")

@@ -1,0 +1,58 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=16 format=3 uid="uid://bir76va17logk"]
+
+[ext_resource type="Script" path="res://Scripts/Unit/UnitData.gd" id="1_q3evc"]
+[ext_resource type="Script" path="res://Scripts/Unit/ArmorData.gd" id="1_tqb4v"]
+[ext_resource type="Script" path="res://Scripts/Unit/DamageData.gd" id="2_t64me"]
+[ext_resource type="Script" path="res://Scripts/Unit/AttackData.gd" id="3_tfp1i"]
+[ext_resource type="Script" path="res://Scripts/Unit/ResourcePool.gd" id="4_7rhko"]
+[ext_resource type="Script" path="res://Scripts/Unit/MovementData.gd" id="5_we5uv"]
+[ext_resource type="Script" path="res://Scripts/Unit/VisualData.gd" id="7_aicoq"]
+[ext_resource type="Texture2D" uid="uid://6a6hpedykm73" path="res://icon.svg" id="8_gqssw"]
+
+[sub_resource type="Resource" id="Resource_igvoe"]
+script = ExtResource("1_tqb4v")
+base_armor = 0.0
+armor_type = 0
+
+[sub_resource type="Resource" id="Resource_m40r5"]
+script = ExtResource("2_t64me")
+base_amount = 5.0
+type = 1
+
+[sub_resource type="Resource" id="Resource_kbefm"]
+script = ExtResource("3_tfp1i")
+range = 10.0
+attack_cooldown = 2.0
+damage = SubResource("Resource_m40r5")
+
+[sub_resource type="Resource" id="Resource_0in3r"]
+script = ExtResource("4_7rhko")
+max_amount = 10.0
+regen_per_second = 0.0
+regens_after_depletion = false
+
+[sub_resource type="Resource" id="Resource_3qjtc"]
+script = ExtResource("4_7rhko")
+max_amount = 0.0
+regen_per_second = 0.0
+regens_after_depletion = false
+
+[sub_resource type="Resource" id="Resource_itgsh"]
+script = ExtResource("5_we5uv")
+speed = 10.0
+immune_to_slow = false
+
+[sub_resource type="Resource" id="Resource_h614b"]
+script = ExtResource("7_aicoq")
+texture = ExtResource("8_gqssw")
+
+[resource]
+script = ExtResource("1_q3evc")
+level = 1
+group = 1
+visual = SubResource("Resource_h614b")
+health = SubResource("Resource_0in3r")
+mana = SubResource("Resource_3qjtc")
+armor = SubResource("Resource_igvoe")
+attack = SubResource("Resource_kbefm")
+movement = SubResource("Resource_itgsh")

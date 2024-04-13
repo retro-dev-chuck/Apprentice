@@ -1,0 +1,63 @@
+[gd_scene load_steps=12 format=3 uid="uid://b6051jl1g8jt6"]
+
+[ext_resource type="Script" path="res://Scripts/Unit.gd" id="1_wpja8"]
+[ext_resource type="Texture2D" uid="uid://dxb55s8k8gkxk" path="res://Art/Apprentice.png" id="6_gy7c5"]
+[ext_resource type="Script" path="res://Scripts/AttackComponent.gd" id="7_nn16o"]
+[ext_resource type="Script" path="res://Scripts/ResourceComponent.gd" id="9_33xkg"]
+[ext_resource type="PackedScene" uid="uid://f7asstx5je3n" path="res://Prefabs/resource_bar.tscn" id="10_kymw6"]
+[ext_resource type="Script" path="res://Scripts/ArmorComponent.gd" id="11_ovb0o"]
+[ext_resource type="Script" path="res://Prefabs/MovementComponent.gd" id="12_lh46y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hvgr1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qek1o"]
+atlas = ExtResource("6_gy7c5")
+region = Rect2(24, 40, 8, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e06s5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gc0w4"]
+bg_color = Color(0.254902, 0.321569, 0.729412, 1)
+
+[node name="UnitBase" type="StaticBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_wpja8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hvgr1")
+
+[node name="Visual" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_qek1o")
+
+[node name="AttackComponent" type="Node2D" parent="."]
+script = ExtResource("7_nn16o")
+
+[node name="RangeArea2D" type="Area2D" parent="AttackComponent"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CircleShape" type="CollisionShape2D" parent="AttackComponent/RangeArea2D"]
+shape = SubResource("CircleShape2D_e06s5")
+debug_color = Color(0.227451, 0.607843, 0, 0.419608)
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("9_33xkg")
+
+[node name="ResourceBar" parent="HealthComponent" instance=ExtResource("10_kymw6")]
+metadata/_edit_use_anchors_ = true
+
+[node name="ManaComponent" type="Node2D" parent="."]
+script = ExtResource("9_33xkg")
+
+[node name="ResourceBar" parent="ManaComponent" instance=ExtResource("10_kymw6")]
+offset_top = 3.0
+offset_bottom = 7.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_gc0w4")
+metadata/_edit_use_anchors_ = true
+
+[node name="ArmorComponent" type="Node2D" parent="."]
+script = ExtResource("11_ovb0o")
+
+[node name="MovementComponent" type="Node2D" parent="."]
+script = ExtResource("12_lh46y")
