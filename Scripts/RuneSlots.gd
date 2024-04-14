@@ -30,8 +30,7 @@ func _on_runes_told(runes: Array[RuneWord]) -> void:
 	if runes[0] != summon_rune:
 		printerr("first rune must be summon rune")
 		return
-	if runes[-1].placement != Enums.RuneSlot.LAST\
-		or runes[-1].unit == null:
+	if runes[-1].placement != Enums.RuneSlot.LAST:
 			printerr("invalid_last_rune")
 			return
 	else:

@@ -1,14 +1,10 @@
-[gd_resource type="Resource" script_class="RuneWord" load_steps=7 format=3 uid="uid://cc3w73bnak78x"]
+[gd_resource type="Resource" script_class="RuneWord" load_steps=6 format=3 uid="uid://cc3w73bnak78x"]
 
 [ext_resource type="Resource" uid="uid://coxi408mcndwa" path="res://Data/Words/B-et-big.tres" id="1_ttbma"]
 [ext_resource type="Resource" uid="uid://bdu4lfxdc221r" path="res://Data/Words/R-el.tres" id="2_ilhyq"]
 [ext_resource type="Resource" uid="uid://b7jqgulkaiglj" path="res://Data/Words/S-mar.tres" id="3_dop2i"]
 [ext_resource type="Script" path="res://Scripts/RuneWord.gd" id="4_4ohwx"]
-[ext_resource type="Texture2D" uid="uid://dxb55s8k8gkxk" path="res://Art/Apprentice.png" id="5_g8ody"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tteji"]
-atlas = ExtResource("5_g8ody")
-region = Rect2(24, 0, 8, 8)
+[ext_resource type="Texture2D" uid="uid://1ejauh40hdq2" path="res://Art/cola.png" id="5_yx8af"]
 
 [resource]
 script = ExtResource("4_4ohwx")
@@ -16,6 +12,6 @@ explanation = "coke"
 meaning = 1
 placement = 3
 word = "ansa"
-sprite = SubResource("AtlasTexture_tteji")
+sprite = ExtResource("5_yx8af")
 first_adj = Array[ExtResource("4_4ohwx")]([ExtResource("1_ttbma"), ExtResource("2_ilhyq"), ExtResource("3_dop2i")])
 second_adj = Array[ExtResource("4_4ohwx")]([])

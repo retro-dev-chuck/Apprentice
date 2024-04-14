@@ -1,6 +1,7 @@
 class_name RuneInputHandle extends Node2D
 
 signal on_apprentice_talked(words: String)
+@onready var rune_text: Label = $"../CanvasLayer/PanelContainer/RuneText"
 
 var current_str: String = ""
 
@@ -14,9 +15,12 @@ func _unhandled_input(event: InputEvent) -> void:
 				if current_str.length() != 0:
 					on_apprentice_talked.emit(current_str)
 					current_str = ""
+		elif typed_event.keycode == KEY_BACKSPACE:
+			if current_str.length() > 0:
+				current_str = current_str.left(current_str.length() - 1)
 		else:
 			current_str = current_str + key
-		
+		rune_text.text = current_str
 func _keycode_to_str(k: Key) -> String: 
 	match k:
 		KEY_A:

@@ -1,7 +1,6 @@
-[gd_scene load_steps=38 format=3 uid="uid://celunqr7x6fjt"]
+[gd_scene load_steps=36 format=3 uid="uid://celunqr7x6fjt"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_dwqor"]
-[ext_resource type="Resource" uid="uid://cwoowupf4oa1r" path="res://Data/Levels/Level1.tres" id="2_pk2ib"]
 [ext_resource type="Resource" uid="uid://coxi408mcndwa" path="res://Data/Words/B-et-big.tres" id="5_e1fa2"]
 [ext_resource type="Resource" uid="uid://ctljfjmbvy66k" path="res://Data/Words/D-es-chicken.tres" id="6_pi0h0"]
 [ext_resource type="Script" path="res://Scripts/RuneInputHandle.gd" id="7_6tjpi"]
@@ -29,7 +28,6 @@
 [ext_resource type="Texture2D" uid="uid://dyedko3s38el" path="res://Art/sp.png" id="21_3vg03"]
 [ext_resource type="Texture2D" uid="uid://bli036oft123f" path="res://Art/flipper.png" id="22_rhcq0"]
 [ext_resource type="Texture2D" uid="uid://b6wqppmahfbwm" path="res://Art/summon.png" id="23_c4qbn"]
-[ext_resource type="PackedScene" uid="uid://bqsmwsce7t08k" path="res://Prefabs/order_paper.tscn" id="24_3bcof"]
 [ext_resource type="Texture2D" uid="uid://1ejauh40hdq2" path="res://Art/cola.png" id="25_1h0s3"]
 [ext_resource type="Texture2D" uid="uid://vxbukpan551t" path="res://Art/fizzle.png" id="25_4m1t2"]
 [ext_resource type="Texture2D" uid="uid://ckruccsck14tu" path="res://Art/inactive.png" id="25_f0vb5"]
@@ -326,7 +324,7 @@ _data = {
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_dwqor")
-levels = Array[Resource("res://Scripts/Level.gd")]([ExtResource("2_pk2ib")])
+levels = [null]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
@@ -364,7 +362,6 @@ offset_bottom = 40.0
 [node name="OrderList" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
 script = ExtResource("18_06o5y")
-paper_scene = ExtResource("24_3bcof")
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
 anchors_preset = 7

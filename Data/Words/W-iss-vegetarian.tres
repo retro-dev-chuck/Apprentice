@@ -42,3 +42,5 @@ placement = 2
 word = "wiss"
 sprite = SubResource("AtlasTexture_tteji")
 buff = SubResource("Resource_cig33")
+first_adj = Array[ExtResource("1_xfmsl")]([])
+second_adj = Array[ExtResource("1_xfmsl")]([])

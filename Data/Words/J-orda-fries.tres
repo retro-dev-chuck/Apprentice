@@ -1,15 +1,11 @@
-[gd_resource type="Resource" script_class="RuneWord" load_steps=8 format=3 uid="uid://dtq1dn7u15xhp"]
+[gd_resource type="Resource" script_class="RuneWord" load_steps=7 format=3 uid="uid://dtq1dn7u15xhp"]
 
 [ext_resource type="Script" path="res://Scripts/RuneWord.gd" id="1_5e82a"]
 [ext_resource type="Resource" uid="uid://coxi408mcndwa" path="res://Data/Words/B-et-big.tres" id="1_mgtgv"]
-[ext_resource type="Texture2D" uid="uid://dxb55s8k8gkxk" path="res://Art/Apprentice.png" id="2_d4x8l"]
 [ext_resource type="Resource" uid="uid://bdu4lfxdc221r" path="res://Data/Words/R-el.tres" id="2_x0o1r"]
 [ext_resource type="Resource" uid="uid://b7jqgulkaiglj" path="res://Data/Words/S-mar.tres" id="3_bw0i5"]
 [ext_resource type="Resource" uid="uid://2na40rpa5lo4" path="res://Data/Units/Summons/EarthGolem.tres" id="3_qtmcu"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_23pxc"]
-atlas = ExtResource("2_d4x8l")
-region = Rect2(32, 8, 8, 8)
+[ext_resource type="Texture2D" uid="uid://dne0qnoov6jxu" path="res://Art/fries.png" id="5_tp62v"]
 
 [resource]
 script = ExtResource("1_5e82a")
@@ -17,7 +13,7 @@ explanation = "fries"
 meaning = 3
 placement = 3
 word = "jorda"
-sprite = SubResource("AtlasTexture_23pxc")
+sprite = ExtResource("5_tp62v")
 unit = ExtResource("3_qtmcu")
 first_adj = Array[ExtResource("1_5e82a")]([ExtResource("1_mgtgv"), ExtResource("2_x0o1r"), ExtResource("3_bw0i5")])
 second_adj = Array[ExtResource("1_5e82a")]([])
