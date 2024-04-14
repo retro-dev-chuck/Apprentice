@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="PackData" load_steps=3 format=3 uid="uid://b3toghlt13d2t"]
 
 [ext_resource type="Script" path="res://Scripts/WaveSystem/PackData.gd" id="1_125tc"]
-[ext_resource type="PackedScene" uid="uid://c07ipb40p4iw1" path="res://Prefabs/goblin.tscn" id="2_g7gmt"]
+[ext_resource type="PackedScene" uid="uid://b6051jl1g8jt6" path="res://Prefabs/unit_base.tscn" id="2_til32"]
 
 [resource]
 script = ExtResource("1_125tc")
-units = Array[PackedScene]([ExtResource("2_g7gmt"), ExtResource("2_g7gmt"), ExtResource("2_g7gmt"), ExtResource("2_g7gmt"), ExtResource("2_g7gmt")])
+units = Array[PackedScene]([ExtResource("2_til32"), ExtResource("2_til32"), ExtResource("2_til32"), ExtResource("2_til32"), ExtResource("2_til32")])

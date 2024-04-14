@@ -49,6 +49,7 @@ texture = ExtResource("8_sd72d")
 [resource]
 script = ExtResource("5_30d2m")
 level = 1
+size_multiplier = 1.0
 group = 2
 visual = SubResource("Resource_d2or8")
 health = SubResource("Resource_byn0o")

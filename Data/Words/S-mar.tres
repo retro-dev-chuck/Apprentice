@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="RuneWord" load_steps=11 format=3 uid="uid://b7jqgulkaiglj"]
+
+[ext_resource type="Script" path="res://Scripts/RuneWord.gd" id="1_54at2"]
+[ext_resource type="Script" path="res://Scripts/Unit/ResourcePool.gd" id="1_mnccq"]
+[ext_resource type="Script" path="res://Scripts/Unit/MovementData.gd" id="2_n4axe"]
+[ext_resource type="Script" path="res://Scripts/Buff.gd" id="3_x0hs0"]
+[ext_resource type="Texture2D" uid="uid://dxb55s8k8gkxk" path="res://Art/Apprentice.png" id="5_sqyl1"]
+
+[sub_resource type="Resource" id="Resource_0beqk"]
+script = ExtResource("1_mnccq")
+max_amount = 0.5
+regen_per_second = 1.0
+regens_after_depletion = false
+
+[sub_resource type="Resource" id="Resource_dywu8"]
+script = ExtResource("1_mnccq")
+max_amount = 1.0
+regen_per_second = 1.0
+regens_after_depletion = false
+
+[sub_resource type="Resource" id="Resource_fjbbi"]
+script = ExtResource("2_n4axe")
+speed = 2.0
+immune_to_slow = false
+
+[sub_resource type="Resource" id="Resource_6lj3h"]
+script = ExtResource("3_x0hs0")
+size_multiplier = 0.5
+health_bonus = SubResource("Resource_0beqk")
+mana_bonus = SubResource("Resource_dywu8")
+movement_bonus = SubResource("Resource_fjbbi")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw4lj"]
+atlas = ExtResource("5_sqyl1")
+region = Rect2(40, 16, 8, 8)
+
+[resource]
+script = ExtResource("1_54at2")
+explanation = "small"
+meaning = 20
+placement = 2
+word = "smar"
+sprite = SubResource("AtlasTexture_cw4lj")
+buff = SubResource("Resource_6lj3h")
+first_adj = Array[ExtResource("1_54at2")]([])
+second_adj = Array[ExtResource("1_54at2")]([])

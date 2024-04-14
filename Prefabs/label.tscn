@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://xtb6c56slkt0"]
+
+[node name="Ordertext" type="Label"]
+text = "I want fries, burger and coke."

@@ -2,7 +2,7 @@ class_name ResourceBar extends ProgressBar
 
 @onready var resource: ResourceComponent = $".."
 
-func _init() -> void:
+func _ready() -> void:
 	resource.on_value_updated.connect(value_updated)
 	
 func value_updated(current: float, max: float) -> void:

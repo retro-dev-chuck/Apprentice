@@ -8,8 +8,9 @@ class_name Unit extends CollisionBody
 @onready var visual: Sprite2D = $Visual
 @onready var armor_component: ArmorComponent = $ArmorComponent
 
-func _init(_data: UnitData) -> void:
-	data = _data
+func _init(_data: UnitData, buff: Buff) -> void:
+	data = _data.duplicate()
+	data.apply_buff(buff)
 	if data == null:
 		printerr("Data is null on enemy!")
 		return

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="RuneWord" load_steps=7 format=3 uid="uid://51e830sigl75"]
+
+[ext_resource type="Resource" uid="uid://coxi408mcndwa" path="res://Data/Words/B-et-big.tres" id="1_8qumv"]
+[ext_resource type="Resource" uid="uid://bdu4lfxdc221r" path="res://Data/Words/R-el.tres" id="2_6hh64"]
+[ext_resource type="Resource" uid="uid://b7jqgulkaiglj" path="res://Data/Words/S-mar.tres" id="3_vhljx"]
+[ext_resource type="Script" path="res://Scripts/RuneWord.gd" id="4_dfnkm"]
+[ext_resource type="Texture2D" uid="uid://dxb55s8k8gkxk" path="res://Art/Apprentice.png" id="5_hu75r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tteji"]
+atlas = ExtResource("5_hu75r")
+region = Rect2(0, 16, 8, 8)
+
+[resource]
+script = ExtResource("4_dfnkm")
+explanation = "soda"
+meaning = 1
+placement = 3
+word = "nox"
+sprite = SubResource("AtlasTexture_tteji")
+first_adj = Array[ExtResource("4_dfnkm")]([ExtResource("1_8qumv"), ExtResource("2_6hh64"), ExtResource("3_vhljx")])
+second_adj = Array[ExtResource("4_dfnkm")]([])

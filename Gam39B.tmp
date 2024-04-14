@@ -1,23 +1,18 @@
-[gd_scene load_steps=21 format=3 uid="uid://celunqr7x6fjt"]
+[gd_scene load_steps=12 format=3 uid="uid://celunqr7x6fjt"]
 
 [ext_resource type="Texture2D" uid="uid://dxb55s8k8gkxk" path="res://Art/Apprentice.png" id="1_5i174"]
 [ext_resource type="Script" path="res://Game.gd" id="1_dwqor"]
+[ext_resource type="Script" path="res://Scripts/WaveSystem/WaveSpawner.gd" id="2_72je7"]
+[ext_resource type="Script" path="res://Scripts/WaveSystem/WaveData.gd" id="2_yhpgc"]
+[ext_resource type="Resource" uid="uid://b3toghlt13d2t" path="res://Data/Packs/Pack_Goblins.tres" id="3_b0bei"]
 [ext_resource type="Script" path="res://Scripts/RuneInputHandle.gd" id="7_6tjpi"]
 [ext_resource type="Script" path="res://Scripts/RuneParser.gd" id="8_bboeu"]
-[ext_resource type="Resource" uid="uid://dtq1dn7u15xhp" path="res://Data/Words/J-orda-fries.tres" id="8_vurk8"]
-[ext_resource type="Resource" uid="uid://btw7jrxlgwhof" path="res://Data/Words/U-us-sumon.tres" id="9_ekheg"]
-[ext_resource type="Script" path="res://Scripts/SummonCircle.gd" id="9_v4omk"]
-[ext_resource type="Script" path="res://Scripts/RuneSlots.gd" id="10_mvoxe"]
-[ext_resource type="Script" path="res://Scripts/OrderCreator.gd" id="10_sh6y4"]
-[ext_resource type="PackedScene" uid="uid://w0fcsnisdueq" path="res://Prefabs/rune_slot.tscn" id="10_vkdj6"]
-[ext_resource type="Resource" uid="uid://cn0e4gbqak5ht" path="res://Data/Words/F-laar-salad.tres" id="11_3sq1a"]
-[ext_resource type="Resource" uid="uid://d0hv5h6sar3wr" path="res://Data/Words/V-aas-burger.tres" id="12_3pkgn"]
-[ext_resource type="Resource" uid="uid://cc3w73bnak78x" path="res://Data/Words/A-nsa-coke.tres" id="13_quir4"]
-[ext_resource type="Resource" uid="uid://51e830sigl75" path="res://Data/Words/N-ox.tres" id="14_ir43i"]
-[ext_resource type="Resource" uid="uid://dksw1eyyw2qs4" path="res://Data/Words/K-hal-ketchup.tres" id="14_jkdhg"]
-[ext_resource type="Resource" uid="uid://clms6ps5b2ifh" path="res://Data/Words/M-ani-may.tres" id="15_m3md4"]
-[ext_resource type="Resource" uid="uid://bdh4vppagt8yo" path="res://Data/Words/Z-u-sumspe.tres" id="16_cdali"]
-[ext_resource type="Script" path="res://Scripts/OrderList.gd" id="18_06o5y"]
+
+[sub_resource type="Resource" id="Resource_k6fg5"]
+script = ExtResource("2_yhpgc")
+initial_delay = 5.0
+delay_between_packs = 2.0
+spawn_list = Array[Resource("res://Scripts/WaveSystem/PackData.gd")]([ExtResource("3_b0bei")])
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5j2w3"]
 texture = ExtResource("1_5i174")
@@ -72,8 +67,13 @@ texture_region_size = Vector2i(8, 8)
 tile_size = Vector2i(8, 8)
 sources/0 = SubResource("TileSetAtlasSource_5j2w3")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0iu4"]
+atlas = ExtResource("1_5i174")
+region = Rect2(16, 40, 8, 8)
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_dwqor")
+wave_data = SubResource("Resource_k6fg5")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_e70yf")
@@ -86,38 +86,19 @@ layer_2/name = "top"
 layer_2/tile_data = PackedInt32Array()
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+
+[node name="WaveSpawner" type="Node2D" parent="."]
+position = Vector2(0, -126)
+script = ExtResource("2_72je7")
+
+[node name="RuneSlot" type="Node2D" parent="."]
+position = Vector2(13, 5)
+
+[node name="Visual" type="Sprite2D" parent="RuneSlot"]
+texture = SubResource("AtlasTexture_d0iu4")
 
 [node name="RuneInputHandle" type="Node2D" parent="."]
 script = ExtResource("7_6tjpi")
 
 [node name="RuneParser" type="Node2D" parent="."]
 script = ExtResource("8_bboeu")
-unlocked_runes = Array[Resource("res://Scripts/RuneWord.gd")]([ExtResource("8_vurk8"), ExtResource("9_ekheg")])
-
-[node name="RuneSlots" type="Node2D" parent="."]
-position = Vector2(15, 8)
-script = ExtResource("10_mvoxe")
-slot_scene = ExtResource("10_vkdj6")
-summon_rune = ExtResource("9_ekheg")
-
-[node name="SummonCircle" type="Node2D" parent="."]
-script = ExtResource("9_v4omk")
-
-[node name="OrderCreator" type="Node2D" parent="."]
-script = ExtResource("10_sh6y4")
-summon = ExtResource("9_ekheg")
-fries = ExtResource("8_vurk8")
-foods = Array[Resource("res://Scripts/RuneWord.gd")]([ExtResource("11_3sq1a"), ExtResource("8_vurk8"), ExtResource("12_3pkgn")])
-drinks = Array[Resource("res://Scripts/RuneWord.gd")]([ExtResource("13_quir4"), ExtResource("14_ir43i")])
-sauces = Array[Resource("res://Scripts/RuneWord.gd")]([ExtResource("14_jkdhg"), ExtResource("15_m3md4"), ExtResource("16_cdali")])
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="OrderList" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
-layout_mode = 2
-script = ExtResource("18_06o5y")

@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="RuneWord" load_steps=11 format=3 uid="uid://cbfpp1umcv4lf"]
+
+[ext_resource type="Script" path="res://Scripts/Unit/ResourcePool.gd" id="1_t7upx"]
+[ext_resource type="Script" path="res://Scripts/RuneWord.gd" id="1_xfmsl"]
+[ext_resource type="Script" path="res://Scripts/Unit/MovementData.gd" id="2_d0il7"]
+[ext_resource type="Script" path="res://Scripts/Buff.gd" id="3_pf3bw"]
+[ext_resource type="Texture2D" uid="uid://dxb55s8k8gkxk" path="res://Art/Apprentice.png" id="5_tpgwn"]
+
+[sub_resource type="Resource" id="Resource_o6oci"]
+script = ExtResource("1_t7upx")
+max_amount = 1.0
+regen_per_second = 1.0
+regens_after_depletion = false
+
+[sub_resource type="Resource" id="Resource_4jtei"]
+script = ExtResource("1_t7upx")
+max_amount = 3.0
+regen_per_second = 2.0
+regens_after_depletion = false
+
+[sub_resource type="Resource" id="Resource_vnog5"]
+script = ExtResource("2_d0il7")
+speed = 1.0
+immune_to_slow = false
+
+[sub_resource type="Resource" id="Resource_cig33"]
+script = ExtResource("3_pf3bw")
+size_multiplier = 1.0
+health_bonus = SubResource("Resource_o6oci")
+mana_bonus = SubResource("Resource_4jtei")
+movement_bonus = SubResource("Resource_vnog5")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tteji"]
+atlas = ExtResource("5_tpgwn")
+region = Rect2(16, 24, 8, 8)
+
+[resource]
+script = ExtResource("1_xfmsl")
+explanation = "wise"
+meaning = 6
+placement = 2
+word = "wiss"
+sprite = SubResource("AtlasTexture_tteji")
+buff = SubResource("Resource_cig33")

@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://w0fcsnisdueq"]
+
+[ext_resource type="Script" path="res://Scripts/RuneSlot.gd" id="1_s5on7"]
+[ext_resource type="Texture2D" uid="uid://dxb55s8k8gkxk" path="res://Art/Apprentice.png" id="2_bpn1k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jraas"]
+atlas = ExtResource("2_bpn1k")
+region = Rect2(16, 48, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aybdk"]
+atlas = ExtResource("2_bpn1k")
+region = Rect2(16, 40, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0iu4"]
+atlas = ExtResource("2_bpn1k")
+region = Rect2(16, 40, 8, 8)
+
+[node name="RuneSlot" type="Node2D"]
+position = Vector2(13, 5)
+script = ExtResource("1_s5on7")
+is_unlocked = true
+locked_texture = SubResource("AtlasTexture_jraas")
+unlocked_texture = SubResource("AtlasTexture_aybdk")
+
+[node name="Visual" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_d0iu4")

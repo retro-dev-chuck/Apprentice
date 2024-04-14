@@ -121,3 +121,7 @@ offset_bottom = 40.0
 [node name="OrderList" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
 script = ExtResource("18_06o5y")
+
+[node name="Ordertext" type="Label" parent="CanvasLayer/MarginContainer/OrderList"]
+layout_mode = 2
+text = "I want fries, burger and coke."

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="RuneWord" load_steps=6 format=3 uid="uid://cn0e4gbqak5ht"]
+
+[ext_resource type="Resource" uid="uid://7y23dn7ox8p" path="res://Data/Words/E-nx-beef.tres" id="1_3y42c"]
+[ext_resource type="Resource" uid="uid://ctljfjmbvy66k" path="res://Data/Words/D-es-chicken.tres" id="2_rfou2"]
+[ext_resource type="Script" path="res://Scripts/RuneWord.gd" id="4_ot5sa"]
+[ext_resource type="Texture2D" uid="uid://dxb55s8k8gkxk" path="res://Art/Apprentice.png" id="5_2ww8x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tteji"]
+atlas = ExtResource("5_2ww8x")
+region = Rect2(0, 8, 8, 8)
+
+[resource]
+script = ExtResource("4_ot5sa")
+explanation = "salad"
+meaning = 2
+placement = 3
+word = "flaar"
+sprite = SubResource("AtlasTexture_tteji")
+first_adj = Array[ExtResource("4_ot5sa")]([ExtResource("1_3y42c"), ExtResource("2_rfou2")])
+second_adj = Array[ExtResource("4_ot5sa")]([])

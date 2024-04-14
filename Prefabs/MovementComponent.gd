@@ -15,4 +15,4 @@ func tick(delta: float) -> void:
 		return
 	if attack_component.has_target_in_range:
 		return
-	unit_base.move
+	#todo: add movement

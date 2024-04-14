@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="RuneWord" load_steps=17 format=3 uid="uid://d0hv5h6sar3wr"]
+
+[ext_resource type="Script" path="res://Scripts/Unit/ResourcePool.gd" id="1_vm4ns"]
+[ext_resource type="Script" path="res://Scripts/Unit/MovementData.gd" id="2_0v1nm"]
+[ext_resource type="Script" path="res://Scripts/Buff.gd" id="3_h0pbd"]
+[ext_resource type="Resource" uid="uid://coxi408mcndwa" path="res://Data/Words/B-et-big.tres" id="4_31v0y"]
+[ext_resource type="Script" path="res://Scripts/RuneWord.gd" id="4_jqkwk"]
+[ext_resource type="Texture2D" uid="uid://dxb55s8k8gkxk" path="res://Art/Apprentice.png" id="5_7wknn"]
+[ext_resource type="Resource" uid="uid://bdu4lfxdc221r" path="res://Data/Words/R-el.tres" id="5_r2j1b"]
+[ext_resource type="Resource" uid="uid://b7jqgulkaiglj" path="res://Data/Words/S-mar.tres" id="6_yvdks"]
+[ext_resource type="Resource" uid="uid://ctljfjmbvy66k" path="res://Data/Words/D-es-chicken.tres" id="8_6tsrf"]
+[ext_resource type="Resource" uid="uid://7y23dn7ox8p" path="res://Data/Words/E-nx-beef.tres" id="9_21dtj"]
+[ext_resource type="Resource" uid="uid://cbfpp1umcv4lf" path="res://Data/Words/W-iss-vegetarian.tres" id="10_mgama"]
+
+[sub_resource type="Resource" id="Resource_pe4ch"]
+script = ExtResource("1_vm4ns")
+max_amount = 2.0
+regen_per_second = 1.0
+regens_after_depletion = false
+
+[sub_resource type="Resource" id="Resource_2l5yc"]
+script = ExtResource("1_vm4ns")
+max_amount = 2.0
+regen_per_second = 1.0
+regens_after_depletion = false
+
+[sub_resource type="Resource" id="Resource_iwicw"]
+script = ExtResource("2_0v1nm")
+speed = 0.5
+immune_to_slow = false
+
+[sub_resource type="Resource" id="Resource_ajq2u"]
+script = ExtResource("3_h0pbd")
+size_multiplier = 2.0
+health_bonus = SubResource("Resource_pe4ch")
+mana_bonus = SubResource("Resource_2l5yc")
+movement_bonus = SubResource("Resource_iwicw")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6b6vg"]
+atlas = ExtResource("5_7wknn")
+region = Rect2(0, 24, 8, 8)
+
+[resource]
+script = ExtResource("4_jqkwk")
+explanation = "burger"
+meaning = 4
+placement = 3
+word = "vaas"
+sprite = SubResource("AtlasTexture_6b6vg")
+buff = SubResource("Resource_ajq2u")
+first_adj = Array[ExtResource("4_jqkwk")]([ExtResource("4_31v0y"), ExtResource("5_r2j1b"), ExtResource("6_yvdks")])
+second_adj = Array[ExtResource("4_jqkwk")]([ExtResource("8_6tsrf"), ExtResource("9_21dtj"), ExtResource("10_mgama")])

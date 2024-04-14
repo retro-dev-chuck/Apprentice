@@ -1,0 +1,59 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=16 format=3 uid="uid://2na40rpa5lo4"]
+
+[ext_resource type="Script" path="res://Scripts/Unit/ArmorData.gd" id="1_fow3f"]
+[ext_resource type="Script" path="res://Scripts/Unit/DamageData.gd" id="2_5avkh"]
+[ext_resource type="Script" path="res://Scripts/Unit/AttackData.gd" id="3_djgpg"]
+[ext_resource type="Script" path="res://Scripts/Unit/ResourcePool.gd" id="4_yg1c1"]
+[ext_resource type="Script" path="res://Scripts/Unit/MovementData.gd" id="5_h103j"]
+[ext_resource type="Script" path="res://Scripts/Unit/UnitData.gd" id="6_f5dya"]
+[ext_resource type="Script" path="res://Scripts/Unit/VisualData.gd" id="7_gi5yh"]
+[ext_resource type="Texture2D" uid="uid://6a6hpedykm73" path="res://icon.svg" id="8_lmri5"]
+
+[sub_resource type="Resource" id="Resource_nxxtc"]
+script = ExtResource("1_fow3f")
+base_armor = 0.0
+armor_type = 0
+
+[sub_resource type="Resource" id="Resource_nteme"]
+script = ExtResource("2_5avkh")
+base_amount = 5.0
+type = 1
+
+[sub_resource type="Resource" id="Resource_014xu"]
+script = ExtResource("3_djgpg")
+range = 10.0
+attack_cooldown = 1.0
+damage = SubResource("Resource_nteme")
+
+[sub_resource type="Resource" id="Resource_byn0o"]
+script = ExtResource("4_yg1c1")
+max_amount = 10.0
+regen_per_second = -0.5
+regens_after_depletion = false
+
+[sub_resource type="Resource" id="Resource_bcwoa"]
+script = ExtResource("4_yg1c1")
+max_amount = 0.0
+regen_per_second = 0.0
+regens_after_depletion = false
+
+[sub_resource type="Resource" id="Resource_5gkvh"]
+script = ExtResource("5_h103j")
+speed = 5.0
+immune_to_slow = false
+
+[sub_resource type="Resource" id="Resource_d2or8"]
+script = ExtResource("7_gi5yh")
+texture = ExtResource("8_lmri5")
+
+[resource]
+script = ExtResource("6_f5dya")
+level = 1
+size_multiplier = 1.0
+group = 2
+visual = SubResource("Resource_d2or8")
+health = SubResource("Resource_byn0o")
+mana = SubResource("Resource_bcwoa")
+armor = SubResource("Resource_nxxtc")
+attack = SubResource("Resource_014xu")
+movement = SubResource("Resource_5gkvh")

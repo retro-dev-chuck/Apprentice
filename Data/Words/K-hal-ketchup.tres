@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="RuneWord" load_steps=4 format=3 uid="uid://dksw1eyyw2qs4"]
+
+[ext_resource type="Script" path="res://Scripts/RuneWord.gd" id="1_xodqf"]
+[ext_resource type="Texture2D" uid="uid://dxb55s8k8gkxk" path="res://Art/Apprentice.png" id="2_ofbl8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tteji"]
+atlas = ExtResource("2_ofbl8")
+region = Rect2(40, 8, 8, 8)
+
+[resource]
+script = ExtResource("1_xodqf")
+explanation = "ketchup"
+meaning = 30
+placement = 3
+word = "khal"
+sprite = SubResource("AtlasTexture_tteji")
+first_adj = Array[ExtResource("1_xodqf")]([])
+second_adj = Array[ExtResource("1_xodqf")]([])
