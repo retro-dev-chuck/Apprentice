@@ -4,6 +4,7 @@ signal on_runes_told(runes: Array[RuneWord])
 
 @export var unlocked_runes: Array[RuneWord] = []
 @onready var rune_input_handle: RuneInputHandle = $"../RuneInputHandle"
+@onready var error_panel: ErrorPanel = %ErrorPanel
 
 func _ready() -> void:
 	rune_input_handle.on_apprentice_talked.connect(_on_apprentice_talked)
@@ -12,11 +13,12 @@ func _on_apprentice_talked(text: String) -> void:
 	var words: PackedStringArray = text.split(" ")
 	if is_valid_words(words):
 		var runes: Array[RuneWord] = get_runes(words)
-		if runes.size() <= 1:
-			printerr("Need to use at least 2 runes to summon")
+		if runes.size() != 2:
+			error_panel.show_error("Need to use 2 runes to summon")
 		else:
-			print("Parsed ",runes.size()," runes")
 			on_runes_told.emit(runes)
+	else: 
+		error_panel.show_error("Invalid runewords, type runes from list!")
 
 func is_valid_words(words: PackedStringArray) -> bool:
 	for word in words:

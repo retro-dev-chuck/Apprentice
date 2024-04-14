@@ -1,0 +1,541 @@
+[gd_scene load_steps=39 format=3 uid="uid://celunqr7x6fjt"]
+
+[ext_resource type="Script" path="res://Game.gd" id="1_dwqor"]
+[ext_resource type="Resource" uid="uid://cwoowupf4oa1r" path="res://Data/Levels/Level1.tres" id="2_pk2ib"]
+[ext_resource type="Resource" uid="uid://coxi408mcndwa" path="res://Data/Words/B-et-big.tres" id="5_e1fa2"]
+[ext_resource type="Resource" uid="uid://ctljfjmbvy66k" path="res://Data/Words/D-es-chicken.tres" id="6_pi0h0"]
+[ext_resource type="Script" path="res://Scripts/RuneInputHandle.gd" id="7_6tjpi"]
+[ext_resource type="Resource" uid="uid://7y23dn7ox8p" path="res://Data/Words/E-nx-beef.tres" id="7_fqnvq"]
+[ext_resource type="Script" path="res://Scripts/RuneParser.gd" id="8_bboeu"]
+[ext_resource type="Resource" uid="uid://dtq1dn7u15xhp" path="res://Data/Words/J-orda-fries.tres" id="8_vurk8"]
+[ext_resource type="Resource" uid="uid://btw7jrxlgwhof" path="res://Data/Words/U-us-sumon.tres" id="9_ekheg"]
+[ext_resource type="Script" path="res://Scripts/SummonCircle.gd" id="9_v4omk"]
+[ext_resource type="Script" path="res://Scripts/RuneSlots.gd" id="10_mvoxe"]
+[ext_resource type="Script" path="res://Scripts/OrderCreator.gd" id="10_sh6y4"]
+[ext_resource type="PackedScene" uid="uid://w0fcsnisdueq" path="res://Prefabs/rune_slot.tscn" id="10_vkdj6"]
+[ext_resource type="Resource" uid="uid://cn0e4gbqak5ht" path="res://Data/Words/F-laar-salad.tres" id="11_3sq1a"]
+[ext_resource type="Resource" uid="uid://d0hv5h6sar3wr" path="res://Data/Words/V-aas-burger.tres" id="12_3pkgn"]
+[ext_resource type="Resource" uid="uid://cc3w73bnak78x" path="res://Data/Words/A-nsa-coke.tres" id="13_quir4"]
+[ext_resource type="Resource" uid="uid://bdu4lfxdc221r" path="res://Data/Words/R-el.tres" id="13_uii4f"]
+[ext_resource type="Resource" uid="uid://51e830sigl75" path="res://Data/Words/N-ox.tres" id="14_ir43i"]
+[ext_resource type="Resource" uid="uid://dksw1eyyw2qs4" path="res://Data/Words/K-hal-ketchup.tres" id="14_jkdhg"]
+[ext_resource type="Resource" uid="uid://b7jqgulkaiglj" path="res://Data/Words/S-mar.tres" id="14_k2jl2"]
+[ext_resource type="Resource" uid="uid://clms6ps5b2ifh" path="res://Data/Words/M-ani-may.tres" id="15_m3md4"]
+[ext_resource type="Resource" uid="uid://bdh4vppagt8yo" path="res://Data/Words/Z-u-sumspe.tres" id="16_cdali"]
+[ext_resource type="Resource" uid="uid://cbfpp1umcv4lf" path="res://Data/Words/W-iss-vegetarian.tres" id="17_qibnr"]
+[ext_resource type="Script" path="res://Scripts/OrderList.gd" id="18_06o5y"]
+[ext_resource type="Texture2D" uid="uid://c8jcdulyjbwu8" path="res://Art/Bg.png" id="19_lbwhk"]
+[ext_resource type="Texture2D" uid="uid://dhv7cj2ufe5dc" path="res://Art/plate.png" id="20_t7o4p"]
+[ext_resource type="Texture2D" uid="uid://dyedko3s38el" path="res://Art/sp.png" id="21_3vg03"]
+[ext_resource type="Texture2D" uid="uid://bli036oft123f" path="res://Art/flipper.png" id="22_rhcq0"]
+[ext_resource type="Texture2D" uid="uid://b6wqppmahfbwm" path="res://Art/summon.png" id="23_c4qbn"]
+[ext_resource type="PackedScene" uid="uid://bqsmwsce7t08k" path="res://Prefabs/order_paper.tscn" id="24_3bcof"]
+[ext_resource type="Texture2D" uid="uid://1ejauh40hdq2" path="res://Art/cola.png" id="25_1h0s3"]
+[ext_resource type="Texture2D" uid="uid://vxbukpan551t" path="res://Art/fizzle.png" id="25_4m1t2"]
+[ext_resource type="Texture2D" uid="uid://ckruccsck14tu" path="res://Art/inactive.png" id="25_f0vb5"]
+[ext_resource type="Texture2D" uid="uid://isw71opic2uy" path="res://Art/fired.png" id="25_vbglo"]
+
+[sub_resource type="Animation" id="Animation_ia72b"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Item:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Item:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Summon2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Inactive2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Fizzle:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Fizzle:scale:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Fizzle:scale:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Fizzle:self_modulate:r")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Fizzle:self_modulate:g")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Fizzle:self_modulate:b")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Fizzle:self_modulate:a")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_fpm3h"]
+resource_name = "appear"
+length = 1.2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Item:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1, 1.2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Item:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1, 1.2)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Summon2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Inactive2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_3q2ar"]
+resource_name = "fail"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Inactive2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Summon2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Fizzle:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Fizzle:scale:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6, 1.2)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Fizzle:scale:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6, 1.2)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Fizzle:self_modulate:r")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.2, 2)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Fizzle:self_modulate:g")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.2, 2)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Fizzle:self_modulate:b")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.2, 2)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Fizzle:self_modulate:a")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.2, 2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_11ud6"]
+_data = {
+"RESET": SubResource("Animation_ia72b"),
+"appear": SubResource("Animation_fpm3h"),
+"fail": SubResource("Animation_3q2ar")
+}
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_dwqor")
+levels = Array[Resource("res://Scripts/Level.gd")]([ExtResource("2_pk2ib")])
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="RuneInputHandle" type="Node2D" parent="."]
+position = Vector2(0, 30)
+script = ExtResource("7_6tjpi")
+
+[node name="RuneParser" type="Node2D" parent="."]
+position = Vector2(0, 30)
+script = ExtResource("8_bboeu")
+unlocked_runes = Array[Resource("res://Scripts/RuneWord.gd")]([ExtResource("13_quir4"), ExtResource("5_e1fa2"), ExtResource("6_pi0h0"), ExtResource("7_fqnvq"), ExtResource("11_3sq1a"), ExtResource("8_vurk8"), ExtResource("14_jkdhg"), ExtResource("15_m3md4"), ExtResource("14_ir43i"), ExtResource("13_uii4f"), ExtResource("14_k2jl2"), ExtResource("9_ekheg"), ExtResource("12_3pkgn"), ExtResource("17_qibnr"), ExtResource("16_cdali")])
+
+[node name="RuneSlots" type="Node2D" parent="."]
+position = Vector2(15, 38)
+script = ExtResource("10_mvoxe")
+slot_scene = ExtResource("10_vkdj6")
+summon_rune = ExtResource("9_ekheg")
+
+[node name="OrderCreator" type="Node2D" parent="."]
+position = Vector2(0, 30)
+script = ExtResource("10_sh6y4")
+summon = ExtResource("9_ekheg")
+fries = ExtResource("8_vurk8")
+foods = Array[Resource("res://Scripts/RuneWord.gd")]([ExtResource("8_vurk8"), ExtResource("12_3pkgn")])
+drinks = Array[Resource("res://Scripts/RuneWord.gd")]([ExtResource("13_quir4")])
+sauces = Array[Resource("res://Scripts/RuneWord.gd")]([ExtResource("14_jkdhg"), ExtResource("15_m3md4"), ExtResource("16_cdali")])
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="OrderList" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+script = ExtResource("18_06o5y")
+paper_scene = ExtResource("24_3bcof")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -87.0
+offset_top = -66.0
+offset_right = 88.0
+offset_bottom = -30.595
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="RuneText" type="Label" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = -72.0
+offset_right = 147.0
+offset_bottom = -36.595
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer2"]
+layout_mode = 2
+
+[node name="OrderTitle" type="Label" parent="CanvasLayer/PanelContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Orders delivered"
+horizontal_alignment = 1
+
+[node name="OrderCount" type="Label" parent="CanvasLayer/PanelContainer2/VBoxContainer"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -95.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/ScrollContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ScrollContainer/Panel"]
+layout_mode = 0
+offset_right = 79.0
+offset_bottom = 40.0
+
+[node name="Title" type="Label" parent="CanvasLayer/ScrollContainer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Runes"
+horizontal_alignment = 1
+
+[node name="Uus" type="Label" parent="CanvasLayer/ScrollContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Uus = Summon"
+horizontal_alignment = 1
+
+[node name="Title2" type="Label" parent="CanvasLayer/ScrollContainer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Unknown"
+horizontal_alignment = 1
+
+[node name="Uus2" type="Label" parent="CanvasLayer/ScrollContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Jorda = ?"
+horizontal_alignment = 1
+
+[node name="Uus3" type="Label" parent="CanvasLayer/ScrollContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Vaas = ?
+Ansa = ?"
+horizontal_alignment = 1
+
+[node name="gameover" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_vbglo")
+
+[node name="Sprites" type="Node2D" parent="."]
+position = Vector2(-1, 30)
+
+[node name="BG" type="Sprite2D" parent="Sprites"]
+position = Vector2(1, -30)
+texture = ExtResource("19_lbwhk")
+
+[node name="Plate" type="Sprite2D" parent="Sprites"]
+position = Vector2(4, -28)
+texture = ExtResource("20_t7o4p")
+
+[node name="Salt-pepper" type="Sprite2D" parent="Sprites"]
+position = Vector2(8, -25)
+texture = ExtResource("21_3vg03")
+
+[node name="Flipper" type="Sprite2D" parent="Sprites"]
+position = Vector2(0, -27)
+texture = ExtResource("22_rhcq0")
+
+[node name="SummonCircleDrink" type="Node2D" parent="."]
+position = Vector2(83, 7)
+script = ExtResource("9_v4omk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SummonCircleDrink"]
+deterministic = true
+libraries = {
+"": SubResource("AnimationLibrary_11ud6")
+}
+
+[node name="Inactive2" type="Sprite2D" parent="SummonCircleDrink"]
+position = Vector2(2, 0)
+texture = ExtResource("25_f0vb5")
+
+[node name="Summon2" type="Sprite2D" parent="SummonCircleDrink"]
+visible = false
+position = Vector2(2, 0)
+texture = ExtResource("23_c4qbn")
+
+[node name="Item" type="Sprite2D" parent="SummonCircleDrink"]
+position = Vector2(1, -1)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("25_1h0s3")
+
+[node name="Fizzle" type="Sprite2D" parent="SummonCircleDrink"]
+visible = false
+position = Vector2(4, 6)
+scale = Vector2(1, 1e-05)
+texture = ExtResource("25_4m1t2")
+
+[node name="SummonCircleFood" type="Node2D" parent="."]
+position = Vector2(2, 1)
+script = ExtResource("9_v4omk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SummonCircleFood"]
+deterministic = true
+libraries = {
+"": SubResource("AnimationLibrary_11ud6")
+}
+
+[node name="Inactive2" type="Sprite2D" parent="SummonCircleFood"]
+position = Vector2(2, 0)
+texture = ExtResource("25_f0vb5")
+
+[node name="Summon2" type="Sprite2D" parent="SummonCircleFood"]
+visible = false
+position = Vector2(2, 0)
+texture = ExtResource("23_c4qbn")
+
+[node name="Item" type="Sprite2D" parent="SummonCircleFood"]
+position = Vector2(1, -1)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("25_1h0s3")
+
+[node name="Fizzle" type="Sprite2D" parent="SummonCircleFood"]
+visible = false
+position = Vector2(4, 6)
+scale = Vector2(1, 1e-05)
+texture = ExtResource("25_4m1t2")

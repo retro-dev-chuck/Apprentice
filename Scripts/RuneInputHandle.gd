@@ -9,11 +9,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and not event.is_pressed() and not event.is_echo():
 		var typed_event = event as InputEventKey
 		var key = _keycode_to_str(typed_event.keycode)
-		print(key)
 		if typed_event.keycode == KEY_ENTER or \
 			typed_event.keycode == KEY_KP_ENTER:
 				if current_str.length() != 0:
-					on_apprentice_talked.emit(current_str)
+					on_apprentice_talked.emit(current_str.trim_prefix(" ").trim_suffix(" "))
 					current_str = ""
 		elif typed_event.keycode == KEY_BACKSPACE:
 			if current_str.length() > 0:

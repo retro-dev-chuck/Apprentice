@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="Level" load_steps=7 format=3 uid="uid://cwoowupf4oa1r"]
+[gd_resource type="Resource" script_class="Level" load_steps=8 format=3 uid="uid://cwoowupf4oa1r"]
 
 [ext_resource type="Script" path="res://Scripts/Level.gd" id="1_5eiyq"]
 [ext_resource type="Resource" uid="uid://btw7jrxlgwhof" path="res://Data/Words/U-us-sumon.tres" id="1_oddca"]
 [ext_resource type="Resource" uid="uid://dtq1dn7u15xhp" path="res://Data/Words/J-orda-fries.tres" id="2_60ruy"]
 [ext_resource type="Resource" uid="uid://d0hv5h6sar3wr" path="res://Data/Words/V-aas-burger.tres" id="3_l0isc"]
+[ext_resource type="Resource" uid="uid://cc3w73bnak78x" path="res://Data/Words/A-nsa-coke.tres" id="4_6jqoq"]
 [ext_resource type="Script" path="res://Scripts/Order.gd" id="5_knsx6"]
 
 [sub_resource type="Resource" id="Resource_fv2xh"]
@@ -13,8 +14,8 @@ value = Array[Resource("res://Scripts/RuneWord.gd")]([ExtResource("1_oddca"), Ex
 [resource]
 script = ExtResource("1_5eiyq")
 initial_delay = 5.0
-total_orders = 5
-time_between_orders = 25.0
+total_orders = 999
+time_between_orders = 5.0
 order_timeout = 30.0
-available_runes = Array[Resource("res://Scripts/RuneWord.gd")]([ExtResource("1_oddca"), ExtResource("2_60ruy"), ExtResource("3_l0isc")])
+available_runes = Array[Resource("res://Scripts/RuneWord.gd")]([ExtResource("1_oddca"), ExtResource("2_60ruy"), ExtResource("3_l0isc"), ExtResource("4_6jqoq")])
 starts_with = Array[ExtResource("5_knsx6")]([SubResource("Resource_fv2xh")])

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://celunqr7x6fjt"]
+[gd_scene load_steps=41 format=3 uid="uid://celunqr7x6fjt"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_dwqor"]
 [ext_resource type="Resource" uid="uid://cwoowupf4oa1r" path="res://Data/Levels/Level1.tres" id="2_pk2ib"]
@@ -33,6 +33,9 @@
 [ext_resource type="Texture2D" uid="uid://1ejauh40hdq2" path="res://Art/cola.png" id="25_1h0s3"]
 [ext_resource type="Texture2D" uid="uid://vxbukpan551t" path="res://Art/fizzle.png" id="25_4m1t2"]
 [ext_resource type="Texture2D" uid="uid://ckruccsck14tu" path="res://Art/inactive.png" id="25_f0vb5"]
+[ext_resource type="Script" path="res://Scripts/ErrorPanel.gd" id="25_fx53y"]
+[ext_resource type="Texture2D" uid="uid://isw71opic2uy" path="res://Art/fired.png" id="25_vbglo"]
+[ext_resource type="AudioStream" uid="uid://bas3aeei3vh48" path="res://Art/burger.ogg" id="35_5daph"]
 
 [sub_resource type="Animation" id="Animation_ia72b"]
 length = 0.001
@@ -351,8 +354,8 @@ position = Vector2(0, 30)
 script = ExtResource("10_sh6y4")
 summon = ExtResource("9_ekheg")
 fries = ExtResource("8_vurk8")
-foods = Array[Resource("res://Scripts/RuneWord.gd")]([ExtResource("11_3sq1a"), ExtResource("8_vurk8"), ExtResource("12_3pkgn")])
-drinks = Array[Resource("res://Scripts/RuneWord.gd")]([ExtResource("13_quir4"), ExtResource("14_ir43i")])
+foods = Array[Resource("res://Scripts/RuneWord.gd")]([ExtResource("8_vurk8"), ExtResource("12_3pkgn")])
+drinks = Array[Resource("res://Scripts/RuneWord.gd")]([ExtResource("13_quir4")])
 sauces = Array[Resource("res://Scripts/RuneWord.gd")]([ExtResource("14_jkdhg"), ExtResource("15_m3md4"), ExtResource("16_cdali")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -382,20 +385,27 @@ grow_vertical = 0
 [node name="RuneText" type="Label" parent="CanvasLayer/PanelContainer"]
 layout_mode = 2
 
-[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer"]
-anchors_preset = 5
+[node name="ErrorPanel" type="PanelContainer" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-offset_left = -57.0
-offset_top = 11.0
-offset_right = 43.0
-offset_bottom = 46.405
+anchor_bottom = 1.0
+offset_left = 134.0
+offset_top = -39.0
+offset_right = 309.0
+offset_bottom = -3.595
 grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("25_fx53y")
 
-[node name="Level" type="Label" parent="CanvasLayer/PanelContainer2"]
+[node name="Text" type="Label" parent="CanvasLayer/ErrorPanel"]
 layout_mode = 2
-text = "Level 1"
-horizontal_alignment = 1
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "s"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
 anchors_preset = 11
@@ -406,13 +416,11 @@ offset_left = -95.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="CanvasLayer/ScrollContainer"]
+[node name="Panel" type="PanelContainer" parent="CanvasLayer/ScrollContainer"]
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ScrollContainer/Panel"]
-layout_mode = 0
-offset_right = 79.0
-offset_bottom = 40.0
+layout_mode = 2
 
 [node name="Title" type="Label" parent="CanvasLayer/ScrollContainer/Panel/VBoxContainer"]
 layout_mode = 2
@@ -423,6 +431,56 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Uus = Summon"
+horizontal_alignment = 1
+
+[node name="Title2" type="Label" parent="CanvasLayer/ScrollContainer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Unknown"
+horizontal_alignment = 1
+
+[node name="Uus2" type="Label" parent="CanvasLayer/ScrollContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Jorda = ?"
+horizontal_alignment = 1
+
+[node name="Uus3" type="Label" parent="CanvasLayer/ScrollContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Vaas = ?
+Ansa = ?"
+horizontal_alignment = 1
+
+[node name="gameover" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_vbglo")
+
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = -86.595
+offset_right = 147.0
+offset_bottom = -36.595
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer2"]
+layout_mode = 2
+
+[node name="OrderTitle" type="Label" parent="CanvasLayer/PanelContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Orders delivered"
+horizontal_alignment = 1
+
+[node name="OrderCount" type="Label" parent="CanvasLayer/PanelContainer2/VBoxContainer"]
+layout_mode = 2
+text = "0"
 horizontal_alignment = 1
 
 [node name="Sprites" type="Node2D" parent="."]
@@ -503,3 +561,7 @@ visible = false
 position = Vector2(4, 6)
 scale = Vector2(1, 1e-05)
 texture = ExtResource("25_4m1t2")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("35_5daph")
+autoplay = true
